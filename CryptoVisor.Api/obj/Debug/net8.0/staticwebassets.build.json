@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "o+pVeqRz16hhdIHYF2btR4nlV/ejYRkrXOv6F5V2kTs=",
+  "Source": "CryptoVisor.Api",
+  "BasePath": "_content/CryptoVisor.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

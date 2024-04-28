@@ -1,0 +1,11 @@
+C:\Users\gabit\source\repos\CriptoVisor\CriptoVisor.Core\bin\Debug\net8.0\CriptoVisor.Core.deps.json
+C:\Users\gabit\source\repos\CriptoVisor\CriptoVisor.Core\bin\Debug\net8.0\CriptoVisor.Core.dll
+C:\Users\gabit\source\repos\CriptoVisor\CriptoVisor.Core\bin\Debug\net8.0\CriptoVisor.Core.pdb
+C:\Users\gabit\source\repos\CriptoVisor\CriptoVisor.Core\obj\Debug\net8.0\CriptoVisor.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gabit\source\repos\CriptoVisor\CriptoVisor.Core\obj\Debug\net8.0\CriptoVisor.Core.AssemblyInfoInputs.cache
+C:\Users\gabit\source\repos\CriptoVisor\CriptoVisor.Core\obj\Debug\net8.0\CriptoVisor.Core.AssemblyInfo.cs
+C:\Users\gabit\source\repos\CriptoVisor\CriptoVisor.Core\obj\Debug\net8.0\CriptoVisor.Core.csproj.CoreCompileInputs.cache
+C:\Users\gabit\source\repos\CriptoVisor\CriptoVisor.Core\obj\Debug\net8.0\CriptoVisor.Core.dll
+C:\Users\gabit\source\repos\CriptoVisor\CriptoVisor.Core\obj\Debug\net8.0\refint\CriptoVisor.Core.dll
+C:\Users\gabit\source\repos\CriptoVisor\CriptoVisor.Core\obj\Debug\net8.0\CriptoVisor.Core.pdb
+C:\Users\gabit\source\repos\CriptoVisor\CriptoVisor.Core\obj\Debug\net8.0\ref\CriptoVisor.Core.dll
