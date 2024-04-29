@@ -1,0 +1,3 @@
+[submodule "crypto-visor"]
+	path = CryptoVisorFlutterApp
+	url = https://github.com/FelipeLemosBellini/crypto-visor.git
