@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoVisor.Core", "CriptoVisor.Core\CryptoVisor.Core.csproj", "{8BCCE078-4C56-47C3-8BB2-6D6685C5D11A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoVisor.Api", "CryptoVisor.Api\CryptoVisor.Api.csproj", "{B54FA078-E53C-44D8-80BD-A47D4D14D8C2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoVisor.Infrastructure", "CryptoVisor.Infrastructure\CryptoVisor.Infrastructure.csproj", "{F98244C9-7CF4-4BF7-87DC-C7202510D6C9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoVisor.Core", "CryptoVisor.Core\CryptoVisor.Core.csproj", "{C107C4ED-7200-4822-A882-B706C9C52904}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8BCCE078-4C56-47C3-8BB2-6D6685C5D11A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8BCCE078-4C56-47C3-8BB2-6D6685C5D11A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8BCCE078-4C56-47C3-8BB2-6D6685C5D11A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8BCCE078-4C56-47C3-8BB2-6D6685C5D11A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B54FA078-E53C-44D8-80BD-A47D4D14D8C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B54FA078-E53C-44D8-80BD-A47D4D14D8C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B54FA078-E53C-44D8-80BD-A47D4D14D8C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{F98244C9-7CF4-4BF7-87DC-C7202510D6C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F98244C9-7CF4-4BF7-87DC-C7202510D6C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F98244C9-7CF4-4BF7-87DC-C7202510D6C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C107C4ED-7200-4822-A882-B706C9C52904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C107C4ED-7200-4822-A882-B706C9C52904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C107C4ED-7200-4822-A882-B706C9C52904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C107C4ED-7200-4822-A882-B706C9C52904}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
