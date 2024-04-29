@@ -4,6 +4,6 @@ namespace CryptoVisor.Application.Interfaces
 {
 	public interface ICryptoGetterApi
 	{
-		Task<List<OhclCoinHistory>> GetOhclValuesList();
+		Task<IEnumerable<OhclCoinHistory>> GetOhclValuesList(int period);
 	}
 }

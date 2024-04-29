@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("818dbd26-32d8-4f9c-bd95-3d8299c2945e")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("CryptoVisor.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+239c7b72f4cf54c5d561510235c5cd5e7fb46629")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+17d20e8aa806296c09b86e838b95b4abbd69f35a")]
 [assembly: System.Reflection.AssemblyProductAttribute("CryptoVisor.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CryptoVisor.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

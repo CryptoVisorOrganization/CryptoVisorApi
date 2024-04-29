@@ -3,11 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CryptoVisor.Infrastructure.Contexts
 {
-	public class CryptoVisorContext(DbContextOptions<CryptoVisorContext> options) : DbContext(options)
+	public class CryptoVisorContext : DbContext
 	{
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		public CryptoVisorContext(DbContextOptions<CryptoVisorContext> options) : base(options)
 		{
-			base.OnModelCreating(modelBuilder);
 		}
 
 		public DbSet<OhclCoinHistory> OhclCoinHistory { get; set; }

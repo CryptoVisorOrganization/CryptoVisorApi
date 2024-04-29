@@ -1,3 +1,10 @@
 
 CryptoVisor.Api/appsettings.json
 CryptoVisor.Api/appsettings.json
+/CryptoVisor.Api/bin
+/CryptoVisor.Api/obj
+/.vs
+/CryptoVisor.Application/obj
+/CryptoVisor.Application/obj
+/CryptoVisor.Infrastructure/obj
+/CryptoVisor.Api/obj

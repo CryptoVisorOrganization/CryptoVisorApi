@@ -8,7 +8,7 @@ namespace CryptoVisor.Core.Entities
 {
 	public enum ECoinType
 	{
-		NotRegistered = 0,
-		Bitcoin = 1
+		NotRegistered,
+		Bitcoin
 	}
 }
