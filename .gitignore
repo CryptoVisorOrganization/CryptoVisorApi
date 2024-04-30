@@ -8,3 +8,5 @@ CryptoVisor.Api/appsettings.json
 /CryptoVisor.Application/obj
 /CryptoVisor.Infrastructure/obj
 /CryptoVisor.Api/obj
+/CryptoVisor.Core/obj
+/CryptoVisor.Api/obj

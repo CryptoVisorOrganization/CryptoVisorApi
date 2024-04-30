@@ -9,6 +9,6 @@ namespace CryptoVisor.Infrastructure.Contexts
 		{
 		}
 
-		public DbSet<OhclCoinHistory> OhclCoinHistory { get; set; }
+		public DbSet<OhlcCoinHistory> OhclCoinHistory { get; set; }
 	}
 }

@@ -2,7 +2,7 @@
 
 namespace CryptoVisor.Core.Entities
 {
-	public class OhclCoinHistory : Entity
+	public class OhlcCoinHistory : Entity
 	{
 		public ECoinType CoinType { get; set; } = ECoinType.NotRegistered;
 

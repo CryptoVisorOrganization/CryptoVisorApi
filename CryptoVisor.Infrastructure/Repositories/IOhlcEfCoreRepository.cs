@@ -19,7 +19,7 @@ namespace CryptoVisor.Infrastructure.Repositories
 			_cryptoVisorContext = cryptoVisorContext;
 		}
 
-		public async Task SaveListAsync(IEnumerable<OhclCoinHistory> dataList) => await _cryptoVisorContext.OhclCoinHistory.AddRangeAsync(dataList);
+		public async Task SaveListAsync(IEnumerable<OhlcCoinHistory> dataList) => await _cryptoVisorContext.OhclCoinHistory.AddRangeAsync(dataList);
 
 		public async Task<bool> VerifyIfExistsCoinOnPeriod(DateTime firstDate, DateTime lastDate, ECoinType eCoinType) => await _cryptoVisorContext.OhclCoinHistory
 			.Where(x => x.Date >= firstDate 
@@ -28,7 +28,7 @@ namespace CryptoVisor.Infrastructure.Repositories
 
 		public async Task TruncateTable() => await _cryptoVisorContext.Database.ExecuteSqlRawAsync("TRUNCATE TABLE [OhclCoinHistory]");
 
-		public async Task<IEnumerable<OhclCoinHistory>> GetDataFromPeriod(DateTime firstDate, DateTime lastDate, ECoinType eCoinType) => await _cryptoVisorContext.OhclCoinHistory
+		public async Task<IEnumerable<OhlcCoinHistory>> GetDataFromPeriod(DateTime firstDate, DateTime lastDate, ECoinType eCoinType) => await _cryptoVisorContext.OhclCoinHistory
 			.Where(x => x.Date >= firstDate
 					&& x.Date <= lastDate
 					&& x.CoinType == eCoinType).ToListAsync();
