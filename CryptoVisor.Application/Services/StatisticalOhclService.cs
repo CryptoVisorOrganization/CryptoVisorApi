@@ -26,16 +26,18 @@ namespace CryptoVisor.Application.Services
 			_unitOfWork = unitOfWork;
 		}
 
-		public async Task<OhlcStatitical> GetOhlcStatitical( DateTime firstDate, DateTime lastDate, ECoinType coinType) 
-		{
-			var coinHistories = await _ohlcRepository.GetDataFromPeriod( firstDate, lastDate, coinType );
+        public async Task<OhlcStatitical> GetOhlcStatitical(DateTime firstDate, DateTime lastDate, ECoinType coinType)
+        {
+            var coinHistories = await _ohlcRepository.GetDataFromPeriod(firstDate, lastDate, coinType);
+            var coinHistoriesDaily = coinHistories.Where(x => x.Date.Hour == 0).ToList();
 
-			
 
-			return new OhlcStatitical();
-		}
+            await GetRelativeStrengthIndex(coinHistoriesDaily);
 
-		private async Task GetExponentialMovingAverage(IEnumerable<OhlcCoinHistory> coinHistories)
+            return new OhlcStatitical();
+        }
+
+        private async Task GetExponentialMovingAverage(IEnumerable<OhlcCoinHistory> coinHistories)
 		{
 			var daysPeriod = coinHistories.Count();
 			var initialMME = coinHistories.Average(x => x.Close);
@@ -50,13 +52,27 @@ namespace CryptoVisor.Application.Services
 
 		private async Task<double> GetRelativeStrengthIndex(IEnumerable<OhlcCoinHistory> coinHistories)
 		{
-			List<double> closes = coinHistories.Select(x => x.Close).ToList();
-			var period = coinHistories.Count();
+			//List<double> closes = coinHistories.Select(x => x.Close).ToList();
+			List<double> closes = new List<double>{1010.0, 1010.0,
+										1005.0,
+										1005.0,
+										1010.0,
+										1005.0,
+										1010.0,
+										1005.0,
+										1010.0,
+										1005.0,
+										1010.0,
+										1005.0,
+										1010.0,
+										1005.0 };
+
+            var period = closes.Count();
 
 			List<double> diaryVariation = new List<double>();
 			for (int i = 1; i < closes.Count; i++)
 			{
-				diaryVariation.Add(closes[i] - closes[i - 1]);
+				diaryVariation.Add(closes.Skip(i).FirstOrDefault() - closes.Skip(i - 1).FirstOrDefault());
 			}
 
 			List<double> gains = [];
@@ -67,8 +83,8 @@ namespace CryptoVisor.Application.Services
 				losses.Add(Math.Max(0, -change));
 			}
 
-			double avgGain = gains.GetRange(0, period).Sum() / period;
-			double avgLoss = losses.GetRange(0, period).Sum() / period;
+			double avgGain = gains.GetRange(0, period - 1).Sum() / period;
+			double avgLoss = losses.GetRange(0, period - 1).Sum() / period;
 
 			for (int i = period; i < gains.Count; i++)
 			{

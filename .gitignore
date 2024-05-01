@@ -10,3 +10,6 @@ CryptoVisor.Api/appsettings.json
 /CryptoVisor.Api/obj
 /CryptoVisor.Core/obj
 /CryptoVisor.Api/obj
+*.dll
+*.pdb
+*.cache
