@@ -10,7 +10,8 @@ namespace CryptoVisor.Application.Interfaces
 	public interface IOhlcRepository
 	{
 		Task SaveListAsync(IEnumerable<OhlcCoinHistory> dataList);
-		Task<IEnumerable<OhlcCoinHistory>> GetDataFromPeriod(DateTime firstDate, DateTime lastDate, ECoinType eCoinType);
+		Task SaveRowAsync(OhlcCoinHistory dataList);
+        Task<IEnumerable<OhlcCoinHistory>> GetDataFromPeriod(DateTime firstDate, DateTime lastDate, ECoinType eCoinType);
 		Task<bool> VerifyIfExistsCoinOnPeriod(DateTime firstDate, DateTime lastDate, ECoinType eCoinType);
 		Task TruncateTable();
 	}

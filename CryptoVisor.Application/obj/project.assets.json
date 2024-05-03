@@ -33,11 +33,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gabit\\source\\repos\\CriptoVisor\\CryptoVisor.Application\\CryptoVisor.Application.csproj",
+      "projectUniqueName": "C:\\Users\\gabit\\CriptoVisor\\CryptoVisor.Application\\CryptoVisor.Application.csproj",
       "projectName": "CryptoVisor.Application",
-      "projectPath": "C:\\Users\\gabit\\source\\repos\\CriptoVisor\\CryptoVisor.Application\\CryptoVisor.Application.csproj",
+      "projectPath": "C:\\Users\\gabit\\CriptoVisor\\CryptoVisor.Application\\CryptoVisor.Application.csproj",
       "packagesPath": "C:\\Users\\gabit\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gabit\\source\\repos\\CriptoVisor\\CryptoVisor.Application\\obj\\",
+      "outputPath": "C:\\Users\\gabit\\CriptoVisor\\CryptoVisor.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -59,8 +59,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\gabit\\source\\repos\\CriptoVisor\\CryptoVisor.Core\\CryptoVisor.Core.csproj": {
-              "projectPath": "C:\\Users\\gabit\\source\\repos\\CriptoVisor\\CryptoVisor.Core\\CryptoVisor.Core.csproj"
+            "C:\\Users\\gabit\\CriptoVisor\\CryptoVisor.Core\\CryptoVisor.Core.csproj": {
+              "projectPath": "C:\\Users\\gabit\\CriptoVisor\\CryptoVisor.Core\\CryptoVisor.Core.csproj"
             }
           }
         }

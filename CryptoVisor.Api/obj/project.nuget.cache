@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VjvmwvRod8tjpMcNAPDa1si5YcHj7tTkK+yXEOJJ7BhS5nzw4sO9QqVaO3Wga+WBYD7FUVo9dJze6JTPdGeDrw==",
+  "dgSpecHash": "F3w5H6ZKEc/yZt5gu1WV73b9pR5EQ1khSwm7IsjhMWG59g5FVvAkKjIgZEI3i/2DuzM6AyHEMbTpfib2vR5aXQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gabit\\source\\repos\\CriptoVisor\\CryptoVisor.Api\\CryptoVisor.Api.csproj",
+  "projectFilePath": "C:\\Users\\gabit\\CriptoVisor\\CryptoVisor.Api\\CryptoVisor.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gabit\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\gabit\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

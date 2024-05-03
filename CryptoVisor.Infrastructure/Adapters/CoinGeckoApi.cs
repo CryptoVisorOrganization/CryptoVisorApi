@@ -1,4 +1,5 @@
-﻿using CryptoVisor.Application.Interfaces;
+﻿using CryptoVisor.Application.Extensions;
+using CryptoVisor.Application.Interfaces;
 using CryptoVisor.Core.Entities;
 using RestSharp;
 using System.Collections.Generic;
@@ -15,11 +16,13 @@ namespace CryptoVisor.Infrastructure.Adapters
 			_connectionStrings = connectionStrings;
 		}
 
-		public async Task<IEnumerable<OhlcCoinHistory>> GetOhclValuesList(int period)
+		public async Task<IEnumerable<OhlcCoinHistory>> GetOhclValuesList(int period, ECoinType eCoinType)
 		{
-			var jsonElement = await MakeRequest($"/coins/bitcoin/ohlc?days={period}&vs_currency=usd");
+			string coin = eCoinType.GetDisplayName();
 
-			var ohclCoinHistoryList = ConvertJsonElementToOhclList(jsonElement);
+            var jsonElement = await MakeRequest($"/coins/{coin}/ohlc?days={period}&vs_currency=usd");
+
+			var ohclCoinHistoryList = ConvertJsonElementToOhclList(jsonElement, eCoinType);
 
 			return ohclCoinHistoryList;
 		}
@@ -43,7 +46,7 @@ namespace CryptoVisor.Infrastructure.Adapters
 			}
 		}
 
-		private IEnumerable<OhlcCoinHistory> ConvertJsonElementToOhclList(JsonElement jsonElement)
+		private IEnumerable<OhlcCoinHistory> ConvertJsonElementToOhclList(JsonElement jsonElement, ECoinType coinType)
 		{
 			List<OhlcCoinHistory> ohclCoinHistoryList = [];
 
@@ -51,7 +54,7 @@ namespace CryptoVisor.Infrastructure.Adapters
 			{
 				var ohclCoinHistory = new OhlcCoinHistory
 				{
-					CoinType = ECoinType.Bitcoin,
+					CoinType = coinType,
 					Date = DateTimeOffset.FromUnixTimeMilliseconds(ohclValue[0].GetInt64()).DateTime,
 					Open = ohclValue[1].GetDouble(),
 					High = ohclValue[2].GetDouble(),

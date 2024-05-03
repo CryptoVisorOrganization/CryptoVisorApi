@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RLlhe43h5qh+A/OwfeprCNKVtI9gOsOOFQkqlwp1UXaFnttNjC/dh/x8619X6gaWA9jyANFiOThj+AXCzKIfxA==",
+  "dgSpecHash": "kKpm9RE6WikUU4CnGBgiSyc1wtgqyWyzg5+OaSA3oAmj5CntxIc/iUl2fWHCrroZ3ec/+rjKU3qd2SyJBlwF4w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gabit\\source\\repos\\CriptoVisor\\CryptoVisor.Infrastructure\\CryptoVisor.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\gabit\\CriptoVisor\\CryptoVisor.Infrastructure\\CryptoVisor.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gabit\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.4\\microsoft.data.sqlite.core.8.0.4.nupkg.sha512",
     "C:\\Users\\gabit\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.4\\microsoft.entityframeworkcore.8.0.4.nupkg.sha512",

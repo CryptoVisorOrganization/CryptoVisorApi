@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3Ou+uKfj8RINp3h+rDUTTU+j32nU1ecBY4cQMTl8Tf5wxcbxZYiZ2mgwM+N/xr+EQx+sdZZodLWEdIJVGWaROw==",
+  "dgSpecHash": "qhhtJrk6fJ8AiMz8uP+rQgtWWM3oXt61f9c2AB+GFhtgVbB1syOpydU5QDWn2ytkfeH8NEyOV/+s6G0T214dhQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gabit\\source\\repos\\CriptoVisor\\CryptoVisor.Application\\CryptoVisor.Application.csproj",
+  "projectFilePath": "C:\\Users\\gabit\\CriptoVisor\\CryptoVisor.Application\\CryptoVisor.Application.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

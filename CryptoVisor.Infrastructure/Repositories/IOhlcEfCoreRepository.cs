@@ -21,7 +21,9 @@ namespace CryptoVisor.Infrastructure.Repositories
 
 		public async Task SaveListAsync(IEnumerable<OhlcCoinHistory> dataList) => await _cryptoVisorContext.OhclCoinHistory.AddRangeAsync(dataList);
 
-		public async Task<bool> VerifyIfExistsCoinOnPeriod(DateTime firstDate, DateTime lastDate, ECoinType eCoinType) => await _cryptoVisorContext.OhclCoinHistory
+		public async Task SaveRowAsync(OhlcCoinHistory dataList) => await _cryptoVisorContext.OhclCoinHistory.AddAsync(dataList);
+
+        public async Task<bool> VerifyIfExistsCoinOnPeriod(DateTime firstDate, DateTime lastDate, ECoinType eCoinType) => await _cryptoVisorContext.OhclCoinHistory
 			.Where(x => x.Date >= firstDate 
 					&& x.Date <= lastDate 
 					&& x.CoinType == eCoinType).AnyAsync();

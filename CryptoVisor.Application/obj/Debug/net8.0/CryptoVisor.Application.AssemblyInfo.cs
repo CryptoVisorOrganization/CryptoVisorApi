@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CryptoVisor.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+17d20e8aa806296c09b86e838b95b4abbd69f35a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4726fd4c4f689971344ab74ae1100c6a8117392d")]
 [assembly: System.Reflection.AssemblyProductAttribute("CryptoVisor.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CryptoVisor.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -10,10 +10,10 @@ namespace CryptoVisor.Api.Controllers
 	[Route("[controller]")]
 	public class OhlcHistoryController : ControllerBase
 	{
-		[HttpGet("GetNewDataOhcl")]
+		[HttpGet("SeedDatabase")]
 		public async Task<CommandResponse> GetNewDataOhcl(
 			[FromServices] OhlcService ohlcService,
-			[FromQuery] GetNewDataOhclCommand command)
+			[FromQuery] SeedDatabaseCommand command)
 		{
 			return await ohlcService.GetListFromApiAndSaveOnDB(command);
 		}

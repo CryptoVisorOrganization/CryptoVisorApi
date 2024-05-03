@@ -3,48 +3,47 @@ using CryptoVisor.Application.Interfaces;
 
 namespace CryptoVisor.Application.Services
 {
-	public class OhlcService
-	{
-		private readonly ICryptoGetterApi _cryptoGetterApi;
-		private readonly IOhlcRepository _ohlcRepository;
-		private readonly IUnitOfWork _unitOfWork;
+    public class OhlcService
+    {
+        private readonly ICryptoGetterApi _cryptoGetterApi;
+        private readonly IOhlcRepository _ohlcRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-		public OhlcService(
-			ICryptoGetterApi cryptoGetterApi,
-			IOhlcRepository ohlcRepository,
-			IUnitOfWork unitOfWork
+        public OhlcService(
+            ICryptoGetterApi cryptoGetterApi,
+            IOhlcRepository ohlcRepository,
+            IUnitOfWork unitOfWork
 
-			)
-		{
-			_cryptoGetterApi = cryptoGetterApi;
-			_ohlcRepository = ohlcRepository;
-			_unitOfWork = unitOfWork;
-		}
+            )
+        {
+            _cryptoGetterApi = cryptoGetterApi;
+            _ohlcRepository = ohlcRepository;
+            _unitOfWork = unitOfWork;
+        }
 
-		public async Task<CommandResponse> GetListFromApiAndSaveOnDB(GetNewDataOhclCommand command)
-		{
-			var data = await _cryptoGetterApi.GetOhclValuesList(command.Period);
+        public async Task<CommandResponse> GetListFromApiAndSaveOnDB(SeedDatabaseCommand command)
+        {
+            var newCoinHistories = await _cryptoGetterApi.GetOhclValuesList(command.Period, command.ECoinType);
 
-			if (command.ReCreateTable)
-				await _ohlcRepository.TruncateTable();
+            var orderedList = newCoinHistories.Select(x => x.Date).OrderBy(x => x.Date).AsEnumerable();
 
-			var orderedList = data.Select(x => x.Date).OrderBy(x => x.Date).AsEnumerable();
+            var firstDate = orderedList.FirstOrDefault();
+            var lastDate = orderedList.LastOrDefault();
 
-			var firstDate = orderedList.FirstOrDefault();
-			var lastDate = orderedList.LastOrDefault();
-			var coinType = data.Select(x => x.CoinType).FirstOrDefault();
+            var existentCoinHistories = await _ohlcRepository.GetDataFromPeriod(firstDate, lastDate, command.ECoinType);
 
-			var canSaveHistoryOnDB = await _ohlcRepository.VerifyIfExistsCoinOnPeriod(firstDate, lastDate, coinType);
+            foreach (var coin in newCoinHistories)
+            {
+                var canAddNewRow = existentCoinHistories.Where(x => x.Date == coin.Date
+                                                                && x.CoinType == command.ECoinType)
+                                                                .Any();
+                if (!canAddNewRow)
+                    await _ohlcRepository.SaveRowAsync(coin);
+            }
 
-			if (!canSaveHistoryOnDB)
-			{
-				await _ohlcRepository.SaveListAsync(data);
-				await _unitOfWork.CommitAsync();
+            await _unitOfWork.CommitAsync();
 
-				return new CommandResponse($"Dados salvos no Banco de dados", false, data);
-			}
-			else
-				return new CommandResponse($"Já há registros salvos no periodo de {firstDate} à {lastDate} e com o tipo de moeda: {coinType}", true, null);
-		}
-	}
+            return new CommandResponse($"Dados salvos no Banco de dados", false, newCoinHistories);
+        }
+    }
 }
