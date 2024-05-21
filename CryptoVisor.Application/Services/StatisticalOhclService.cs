@@ -26,18 +26,57 @@ namespace CryptoVisor.Application.Services
             var coinHistories = await _ohlcRepository.GetDataFromPeriod(firstDate, lastDate, coinType);
             var coinHistoriesDaily = coinHistories.Where(x => x.Date.Hour == 0).ToList();
 
-
-            await GetRelativeStrengthIndexList(coinHistoriesDaily);
+            var statitics = new OhlcStatitical
+            {
+                RelativeStrengthIndex = await GetRelativeStrengthIndexList(coinHistoriesDaily),
+                ExponentialMovingAverageOf8days = await GetExponentialMovingAverageList(coinHistoriesDaily, 8),
+                ExponentialMovingAverageOf14days = await GetExponentialMovingAverageList(coinHistoriesDaily, 14),
+                ExponentialMovingAverageOf30days = await GetExponentialMovingAverageList(coinHistoriesDaily, 30)
+            };
+            
 
             return new OhlcStatitical();
         }
 
-        private async Task GetExponentialMovingAverage(IEnumerable<OhlcCoinHistory> coinHistories)
+        private async Task<List<ExponentialMovingAverage>> GetExponentialMovingAverageList(IEnumerable<OhlcCoinHistory> coinHistories, int period)
         {
-            var daysPeriod = coinHistories.Count();
-            var initialMME = coinHistories.Average(x => x.Close);
-            var multiplicator = 2 / (daysPeriod + 1);
+            var listOfEmaPeriods = new List<ExponentialMovingAverage>();
 
+            var orderedCoinHistories = coinHistories.OrderByDescending(x => x.Date).ToList();
+
+            for (int i = 0; i <= orderedCoinHistories.Count - period; i++)
+            {
+                var periodCoinList = orderedCoinHistories.Skip(i).Take(period).Select(x => x.Close).ToList();
+                var ema = await GetExponentialMovingAverage(periodCoinList, period);
+
+                var emaResult = new ExponentialMovingAverage
+                {
+                    Date = orderedCoinHistories.Skip(i).Select(x => x.Date).FirstOrDefault(),
+                    Value = ema
+                };
+
+                listOfEmaPeriods.Add(emaResult);
+            }
+
+            return listOfEmaPeriods;
+        }
+        private async Task<double> GetExponentialMovingAverage(List<double> closes, int period)
+        {
+            double multiplier = 2.0 / (period + 1);
+            double? previousEma = null;
+
+            foreach (double close in closes)
+            {
+                double emaValue;
+                if (previousEma == null)
+                    emaValue = close;
+                else
+                    emaValue = (close - previousEma.Value) * multiplier + previousEma.Value;
+
+                previousEma = emaValue;
+            }
+
+            return previousEma ?? 0;
         }
 
         private async Task<double> GetBollingerBands()
@@ -67,7 +106,6 @@ namespace CryptoVisor.Application.Services
 
             return listOfRsiPeriods;
         }
-
         private async Task<double> GetRelativeStrengthIndex(List<double> closes)
         {
             var period = closes.Count();
