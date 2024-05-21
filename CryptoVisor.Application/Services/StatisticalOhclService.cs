@@ -9,16 +9,12 @@ namespace CryptoVisor.Application.Services
     public class StatisticalOhclService
     {
         private readonly IOhlcRepository _ohlcRepository;
-        private readonly IUnitOfWork _unitOfWork;
 
         public StatisticalOhclService(
-            IOhlcRepository ohlcRepository,
-            IUnitOfWork unitOfWork
-
+            IOhlcRepository ohlcRepository
             )
         {
             _ohlcRepository = ohlcRepository;
-            _unitOfWork = unitOfWork;
         }
 
         public async Task<OhlcStatitical> GetOhlcStatitical(DateTime firstDate, DateTime lastDate, ECoinType coinType)
@@ -29,13 +25,14 @@ namespace CryptoVisor.Application.Services
             var statitics = new OhlcStatitical
             {
                 RelativeStrengthIndex = await GetRelativeStrengthIndexList(coinHistoriesDaily),
+                BollingerBands = await GetBollingerBandsList(coinHistoriesDaily),
                 ExponentialMovingAverageOf8days = await GetExponentialMovingAverageList(coinHistoriesDaily, 8),
                 ExponentialMovingAverageOf14days = await GetExponentialMovingAverageList(coinHistoriesDaily, 14),
-                ExponentialMovingAverageOf30days = await GetExponentialMovingAverageList(coinHistoriesDaily, 30)
+                ExponentialMovingAverageOf30days = await GetExponentialMovingAverageList(coinHistoriesDaily, 30),
+                LastCloseValue = coinHistoriesDaily.OrderBy(x => x.Date).Select(x => x.Close).LastOrDefault()
             };
-            
 
-            return new OhlcStatitical();
+            return statitics;
         }
 
         private async Task<List<ExponentialMovingAverage>> GetExponentialMovingAverageList(IEnumerable<OhlcCoinHistory> coinHistories, int period)
@@ -79,9 +76,43 @@ namespace CryptoVisor.Application.Services
             return previousEma ?? 0;
         }
 
-        private async Task<double> GetBollingerBands()
+        private async Task<List<BollingerBands>> GetBollingerBandsList(IEnumerable<OhlcCoinHistory> coinHistories)
         {
-            return 0.0;
+            var listOfEmaPeriods = new List<BollingerBands>();
+
+            var orderedCoinHistories = coinHistories.OrderByDescending(x => x.Date).ToList();
+
+            for (int i = 0; i <= orderedCoinHistories.Count - 20; i++)
+            {
+                var periodCoinList = orderedCoinHistories.Skip(i).Take(20).Select(x => x.Close).ToList();
+                var ema = await GetBollingerBands(periodCoinList);
+
+                ema.Date = orderedCoinHistories.Skip(i).Select(x => x.Date).FirstOrDefault();
+
+                listOfEmaPeriods.Add(ema);
+            }
+
+            return listOfEmaPeriods;
+        }
+        private async Task<BollingerBands> GetBollingerBands(List<double> closes)
+        {
+            int period = 20;
+            int numStdDev = 2;
+
+            double mean = closes.Average();
+            double sumOfSquaresOfDifferences = closes.Select(val => (val - mean) * (val - mean)).Sum();
+            double stdDev = Math.Sqrt(sumOfSquaresOfDifferences / period);
+
+            double sma = mean;
+            double upperBand = mean + (numStdDev * stdDev);
+            double lowerBand = mean - (numStdDev * stdDev);
+
+            return new BollingerBands
+            {
+                Higher = upperBand,
+                Lower = lowerBand,
+                Base = sma
+            };
         }
 
         private async Task<List<RelativeStrengthIndex>> GetRelativeStrengthIndexList(IEnumerable<OhlcCoinHistory> coinHistories)
