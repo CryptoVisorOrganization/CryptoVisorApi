@@ -8,7 +8,7 @@ namespace CryptoVisor.Core.ValueObjects
 {
     public class ExponentialMovingAverage
     {
-        public DateTime Date;
-        public double Value;
+        public DateTime Date {  get; set; }
+        public double Value { get; set; }
     }
 }

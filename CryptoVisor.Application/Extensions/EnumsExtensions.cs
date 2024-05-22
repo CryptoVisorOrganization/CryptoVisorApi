@@ -15,7 +15,7 @@ namespace CryptoVisor.Application.Extensions
                                 .GetCustomAttribute<DisplayAttribute>()
                                 .GetName();
             }
-            catch (Exception)
+            catch
             {
                 return string.Empty;
             }

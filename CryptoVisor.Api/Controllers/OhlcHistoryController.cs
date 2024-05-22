@@ -18,21 +18,6 @@ namespace CryptoVisor.Api.Controllers
 			return await ohlcService.GetListFromApiAndSaveOnDB(command);
 		}
 
-        [HttpGet("testes")]
-        public async Task<CommandResponse> GetData(
-            [FromServices] StatisticalOhclService statisticalOhclService,
-            [FromQuery] GetDataFromPeriodCommand command
-            )
-        {
-            await statisticalOhclService.GetOhlcStatitical(command.FirstDate, command.LastDate, command.ECoinType);
-
-            return new CommandResponse(
-                "Dados obtidos com sucesso!",
-                false,
-                null
-                );
-        }
-
         [HttpGet("GetData")]
 		public async Task<CommandResponse> GetData(
 			[FromServices] IOhlcRepository ohlcRepository,

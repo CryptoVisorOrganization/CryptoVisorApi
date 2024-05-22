@@ -32,8 +32,9 @@ namespace CryptoVisor.Infrastructure
 
 		private static void AddServices(IServiceCollection services)
 		{
+			services.TryAddTransient<CoinsService>();
 			services.TryAddTransient<OhlcService>();
-			services.TryAddTransient<StatisticalOhclService>();
+            services.TryAddTransient<StatisticalOhclService>();
         }
 
 		private static void AddRepositories(IServiceCollection services, ServiceLifetime serviceLifetime = ServiceLifetime.Scoped)
