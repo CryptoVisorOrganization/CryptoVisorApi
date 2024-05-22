@@ -1,12 +1,12 @@
 ﻿using CryptoVisor.Application.Commands;
 using CryptoVisor.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace CryptoVisor.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]"), Authorize]
     public class OhlcStatisticsController : ControllerBase
     {
         [HttpGet]

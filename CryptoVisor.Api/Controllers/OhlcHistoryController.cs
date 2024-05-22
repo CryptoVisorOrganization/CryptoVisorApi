@@ -1,14 +1,14 @@
-using CryptoVisor.Api.Models;
 using CryptoVisor.Application.Commands;
 using CryptoVisor.Application.Interfaces;
 using CryptoVisor.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CryptoVisor.Api.Controllers
 {
-	[ApiController]
-	[Route("[controller]")]
-	public class OhlcHistoryController : ControllerBase
+    [ApiController]
+	[Route("[controller]"), Authorize]
+    public class OhlcHistoryController : ControllerBase
 	{
 		[HttpGet("SeedDatabase")]
 		public async Task<CommandResponse> GetNewDataOhcl(

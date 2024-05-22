@@ -12,63 +12,63 @@ namespace CryptoVisor.Core.Entities
         NotRegistered,
 
         [Display(Name = "bitcoin")]
-        Bitcoin, // c
+        Bitcoin,
 
         [Display(Name = "ethereum")]
-        Ethereum, // c
+        Ethereum,
 
         [Display(Name = "binancecoin")]
-        BNB, // c
+        BNB,
 
         [Display(Name = "solana")]
-        Solana, // c
+        Solana,
 
         [Display(Name = "ripple")]
-        XRP, // c
+        XRP,
 
         [Display(Name = "dogecoin")]
-        Dogecoin, // c
+        Dogecoin,
 
         [Display(Name = "the-open-network")]
-        Toncoin, // c
+        Toncoin,
 
         [Display(Name = "cardano")]
-        Cardano, // c
+        Cardano,
 
         [Display(Name = "shiba-inu")]
-        ShibaInu, // c
+        ShibaInu,
 
         [Display(Name = "avalanche-2")]
-        Avalanche, // c
+        Avalanche,
 
         [Display(Name = "tron")]
-        TRON, // c
+        TRON,
 
         [Display(Name = "polkadot")]
-        Polkadot, // c
+        Polkadot,
 
         [Display(Name = "bitcoin-cash")]
-        BitcoinCash, // c
+        BitcoinCash,
 
         [Display(Name = "chainlink")]
-        Chainlink, // c
+        Chainlink,
 
         [Display(Name = "matic-network")]
-        Polygon, // c
+        Polygon,
 
         [Display(Name = "near")]
-        NEARProtocol, // c      
+        NEARProtocol,  
 
         [Display(Name = "internet-computer")]
-        InternetComputer, // naoo funcionou
+        InternetComputer,
 
         [Display(Name = "litecoin")]
-        Litecoin, // naoo funcionou
+        Litecoin,
 
         [Display(Name = "uniswap")]
-        Uniswap, // naoo funcionou
+        Uniswap,
 
         [Display(Name = "aptos")]
-        Aptos // c
+        Aptos
     }
 }

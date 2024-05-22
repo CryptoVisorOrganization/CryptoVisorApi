@@ -35,6 +35,24 @@ namespace CryptoVisor.Infrastructure
 				return conn ?? String.Empty;
 			}
 		}
-	}
+
+        public string UserApi
+        {
+            get
+            {
+                var conn = Configuration.GetConnectionString("UserApi");
+                return conn ?? String.Empty;
+            }
+        }
+
+        public string PasswordApi
+        {
+            get
+            {
+                var conn = Configuration.GetConnectionString("PasswordApi");
+                return conn ?? String.Empty;
+            }
+        }
+    }
 }
 

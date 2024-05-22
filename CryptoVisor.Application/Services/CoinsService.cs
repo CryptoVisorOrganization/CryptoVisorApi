@@ -15,13 +15,15 @@ namespace CryptoVisor.Application.Services
         {
             var coinInfos = new List<CoinInfo>();
 
+            var rootPath = AppDomain.CurrentDomain.BaseDirectory;
+
             foreach (var coin in Enum.GetValues(typeof(ECoinType)).Cast<ECoinType>())
             {
                 string displayName = coin.GetDisplayName();
 
                 if (displayName != String.Empty)
                 {
-                    var imagePath = Path.Combine(@"..\CryptoVisor.Core\CoinsImages", $"{displayName}.png");
+                    var imagePath = Path.Combine(rootPath, "CoinsImages", $"{displayName}.png");
 
                     if (File.Exists(imagePath))
                     {
@@ -35,7 +37,7 @@ namespace CryptoVisor.Application.Services
                         });
                     }
                 }
-            } 
+            }
 
             return coinInfos;
         }
