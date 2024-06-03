@@ -32,7 +32,7 @@ namespace CryptoVisor.Application.Services
 
                         coinInfos.Add(new CoinInfo
                         {
-                            Name = displayName,
+                            Name = coin.ToString(),
                             Base64Image = base64Image
                         });
                     }

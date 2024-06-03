@@ -24,15 +24,14 @@ namespace CryptoVisor.Api.Controllers
 			[FromQuery] GetDataFromPeriodCommand command
 			)
 		{
-			var coinHistories = await ohlcRepository.GetDataFromPeriod(command.FirstDate, command.LastDate, command.ECoinType);
 
             try
             {
 				return new CommandResponse(
 				"Dados obtidos com sucesso!",
 				false,
-                coinHistories.Where(x => x.Date.Hour == 0).ToList()
-				);
+                await ohlcRepository.GetDataFromPeriod(command.FirstDate, command.LastDate, command.ECoinType)
+                );
 			}
 			catch
 			{

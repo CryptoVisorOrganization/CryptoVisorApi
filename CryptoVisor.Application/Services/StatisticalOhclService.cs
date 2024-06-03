@@ -19,8 +19,8 @@ namespace CryptoVisor.Application.Services
 
         public async Task<OhlcStatitical> GetOhlcStatitical(DateTime firstDate, DateTime lastDate, ECoinType coinType)
         {
-            var coinHistories = await _ohlcRepository.GetDataFromPeriod(firstDate, lastDate, coinType);
-            var coinHistoriesDaily = coinHistories.Where(x => x.Date.Hour == 0).ToList();
+            var coinHistoriesDaily = await _ohlcRepository.GetDataFromPeriod(firstDate, lastDate, coinType);
+            //var coinHistoriesDaily = coinHistories.Where(x => x.Date.Hour == 0).ToList();
 
             var statitics = new OhlcStatitical
             {
