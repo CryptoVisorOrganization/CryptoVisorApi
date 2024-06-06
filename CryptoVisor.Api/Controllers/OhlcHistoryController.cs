@@ -30,7 +30,7 @@ namespace CryptoVisor.Api.Controllers
 				return new CommandResponse(
 				"Dados obtidos com sucesso!",
 				false,
-                await ohlcRepository.GetDataFromPeriod(command.FirstDate, command.LastDate, command.ECoinType)
+                await ohlcRepository.GetDataFromPeriod(command.FirstDate ?? DateTime.MinValue, command.LastDate ?? DateTime.MaxValue, command.ECoinType)
                 );
 			}
 			catch
